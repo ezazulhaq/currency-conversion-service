@@ -1,2 +1,4 @@
 # Currency Conversion service
 GET http://localhost:8101/currency-conversion/from/USD/to/INR/quantity/10 HTTP/1.1
+###
+GET http://localhost:8101/currency-conversion-feign/from/USD/to/INR/quantity/10 HTTP/1.1
