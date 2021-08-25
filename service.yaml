@@ -1,0 +1,94 @@
+apiVersion: v1
+items:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        cloud.google.com/neg: '{"ingress":true}'
+      creationTimestamp: "2021-08-25T18:01:56Z"
+      finalizers:
+        - service.kubernetes.io/load-balancer-cleanup
+      labels:
+        app: currency-conversion
+      name: currency-conversion
+      namespace: default
+      resourceVersion: "11260"
+      uid: 6199be9c-cd3b-45c5-ab12-48d5dddc9772
+    spec:
+      clusterIP: 10.68.1.45
+      clusterIPs:
+        - 10.68.1.45
+      externalTrafficPolicy: Cluster
+      ports:
+        - nodePort: 30695
+          port: 8101
+          protocol: TCP
+          targetPort: 8101
+      selector:
+        app: currency-conversion
+      sessionAffinity: None
+      type: LoadBalancer
+    status:
+      loadBalancer:
+        ingress:
+          - ip: 35.240.242.176
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        cloud.google.com/neg: '{"ingress":true}'
+      creationTimestamp: "2021-08-25T17:47:10Z"
+      finalizers:
+        - service.kubernetes.io/load-balancer-cleanup
+      labels:
+        app: currency-exchange
+      name: currency-exchange
+      namespace: default
+      resourceVersion: "6791"
+      uid: 110d448d-547f-45f8-8010-ac13092b8e5f
+    spec:
+      clusterIP: 10.68.9.250
+      clusterIPs:
+        - 10.68.9.250
+      externalTrafficPolicy: Cluster
+      ports:
+        - nodePort: 31011
+          port: 8001
+          protocol: TCP
+          targetPort: 8001
+      selector:
+        app: currency-exchange
+      sessionAffinity: None
+      type: LoadBalancer
+    status:
+      loadBalancer:
+        ingress:
+          - ip: 34.87.99.122
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      creationTimestamp: "2021-08-25T17:28:56Z"
+      labels:
+        component: apiserver
+        provider: kubernetes
+      name: kubernetes
+      namespace: default
+      resourceVersion: "201"
+      uid: 7225dada-9b2d-4e64-8bfd-20de7489d6a0
+    spec:
+      clusterIP: 10.68.0.1
+      clusterIPs:
+        - 10.68.0.1
+      ports:
+        - name: https
+          port: 443
+          protocol: TCP
+          targetPort: 443
+      sessionAffinity: None
+      type: ClusterIP
+    status:
+      loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
