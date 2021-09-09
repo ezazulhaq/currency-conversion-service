@@ -18,9 +18,12 @@ spec:
         - image: ezazulhaq02/currency-conversion-service:0.0.2-SNAPSHOT
           imagePullPolicy: IfNotPresent
           name: currency-conversion-service
-          env:
-            - name: CURRENCY_EXCHANGE_URI
-              value: http://currency-exchange
+          envFrom:
+            - configMapRef:
+                name: currency-conversion
+          # env:
+          #   - name: CURRENCY_EXCHANGE_URI
+          #     value: http://currency-exchange
           resources:
             limits:
               memory: "128m"
@@ -41,3 +44,10 @@ spec:
   selector:
     app: currency-conversion
   type: LoadBalancer
+---
+apiVersion: v1
+data:
+  CURRENCY_EXCHANGE_URI: http://currency-exchange
+kind: ConfigMap
+metadata:
+  name: currency-conversion
