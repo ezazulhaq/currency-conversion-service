@@ -24,6 +24,14 @@ spec:
           # env:
           #   - name: CURRENCY_EXCHANGE_URI
           #     value: http://currency-exchange
+          readinessProbe:
+            httpGet:
+              port: 8101
+              path: /actuator/health/readiness
+          livenessProbe:
+            httpGet:
+              port: 8101
+              path: /actuator/health/liveness
           resources:
             limits:
               memory: "128m"
