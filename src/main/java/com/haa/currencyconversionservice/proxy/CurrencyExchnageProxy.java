@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 //@FeignClient(name = "currency-exchange-service", url = "localhost:8001")
 //@FeignClient(name = "currency-exchange-service")
-@FeignClient(name = "currency-exchange-service", url = "${CURRENCY_EXCHANGE_SERVICE_HOST:http://localhost}:8001")
+//@FeignClient(name = "currency-exchange-service", url = "${CURRENCY_EXCHANGE_SERVICE_HOST:http://localhost}:8001")
+@FeignClient(name = "currency-exchange-service", url = "${CURRENCY_EXCHANGE_URI:http://localhost}:8001")
 public interface CurrencyExchnageProxy {
 
     @GetMapping(path = "/currency-exchange/from/{from}/to/{to}")
